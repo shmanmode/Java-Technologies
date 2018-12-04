@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form>
+Flight-To-Be-Search:<input id="flightNo"/><br/>
+<input id="btn" type="submit" value="Search" />
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#btn").click(function(evt) {
+		evt.preventDefault();
+		$.ajax({
+			url : "searchFlightController?flightNo="+$("#flightNo").val(),
+			method : "GET",
+			success : function(data) {
+				alert(data);
+				alert(JSON.stringify(data));
+			}
+		})
+	})
+})
+</script>
+</html>
